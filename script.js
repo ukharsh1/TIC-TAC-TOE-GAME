@@ -18,8 +18,7 @@ let count=0;
 boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
         count+=1;
-      console.log("box was clicked");
-      box.innerText=turnO?"O":"X"
+      box.innerText=turnO?"O":"X";
       turnO=!turnO;
       box.disabled=true; 
 
@@ -39,6 +38,11 @@ const checkWinner = ()=>{
             showWinner(val1);
             
         }
+        else if(count===9){
+            winMassage.innerText="Game Draw";
+            winMassageContainer.classList.remove("hide");
+            disableButtons();
+        }
      }
 
     }
@@ -55,6 +59,7 @@ const disableButtons = ()=>{
     for(let box of boxes){
         box.disabled=true;
     }
+    count=0;
 }
 const enableButtons = ()=>{
     for(let box of boxes){
